@@ -1,0 +1,31 @@
+.box:hover{
+    cursor: pointer;
+    background-color: white;
+    scale: 1.1;
+}
+
+.boxActive{
+    background-color: white;
+    cursor: not-allowed;
+}
+.boxActive:hover{
+    cursor: not-allowed;
+}
+
+.toast{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    animation: ani 2s ease-in;
+}
+
+@keyframes ani {
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translatex(0) scale(4);
+    }
+}
