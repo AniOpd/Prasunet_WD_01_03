@@ -89,11 +89,11 @@ const TicTacToe = () => {
 
   const renderStatus = () => {
     if (winner) {
-        return `Winner: ${winner}`;
+        return `Winner: ${winner === playingAs ? "You" : opponent}`;
     } else if (getEmptyCells(board).length === 0) {
        return 'Draw!';
     } else {
-      return `Next player: ${currentPlayer ==='O' ? 'X' : 'O'}`;
+      return `Next player: ${currentPlayer === playingAs ? "You" : opponent}`;
     }
   };
 
