@@ -94,6 +94,11 @@ io.on("connection", (socket) => {
 });
 
 
+httpServer.prependListener("request",(req,res)=>{
+  res.setHeader("Access-Control-Allow-Origin","prasunet-wd-01-03-frontend.vercel.app");
+  res.setHeader("Access-Control-Allow-Methods","GET,POST");
+})
+
 httpServer.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
