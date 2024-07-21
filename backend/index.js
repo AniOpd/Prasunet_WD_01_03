@@ -21,6 +21,10 @@ const io = new Server(httpServer, {
   },
 });
 
+httpServer.use(cors({
+  origin: "*",
+}));
+
 const allUsers = {};
 const allRooms = [];
 
