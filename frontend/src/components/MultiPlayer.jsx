@@ -157,7 +157,7 @@ const TicTacToe = () => {
 
     const newSocket = io("https://prasunet-wd-01-03.vercel.app", {
       autoConnect: true,
-      transports: ["websocket"],
+      transports: ["websocket", "polling", "flashsocket"],
     });
 
     newSocket?.emit("request_to_play", {
