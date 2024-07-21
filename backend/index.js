@@ -2,29 +2,16 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import dotenv from "dotenv";
 dotenv.config();
-import cors from "cors";
-import express from "express";
-const app = express();
-app.use(cors({
-  origin: "*",
-}));
 
 const port = process.env.PORT || 3000;
-
-
 
 const httpServer = createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "prasunet-wd-01-03-frontend.vercel.app",
+    methods: ["GET", "POST"],
   },
 });
-
-httpServer.use(cors({
-  origin: "*",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}));
 
 const allUsers = {};
 const allRooms = [];
