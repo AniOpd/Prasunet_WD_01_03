@@ -16,6 +16,10 @@ const io = new Server(httpServer, {
 const allUsers = {};
 const allRooms = [];
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+})
+
 io.on("connection", (socket) => {
   console.log("New connection", socket.id);
   allUsers[socket.id] = {
@@ -89,9 +93,6 @@ io.on("connection", (socket) => {
   });
 });
 
-app.get("/", (req, res) => {
-  res.send("Server is running");
-});
 
 httpServer.listen(port, () => {
   console.log(`Server is running on port ${port}`);
