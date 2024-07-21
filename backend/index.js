@@ -2,6 +2,8 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import dotenv from "dotenv";
 dotenv.config();
+import express from "express";
+const app = express();
 const port = process.env.PORT || 3000;
 
 const httpServer = createServer();
@@ -87,7 +89,7 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Server is running");
 });
 
