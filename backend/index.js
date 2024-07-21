@@ -8,17 +8,13 @@ const port = process.env.PORT || 3000;
 const httpServer = createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: "prasunet-wd-01-03-frontend.vercel.app",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
 
 const allUsers = {};
 const allRooms = [];
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-})
 
 io.on("connection", (socket) => {
   console.log("New connection", socket.id);
@@ -95,7 +91,7 @@ io.on("connection", (socket) => {
 
 
 httpServer.prependListener("request",(req,res)=>{
-  res.setHeader("Access-Control-Allow-Origin","prasunet-wd-01-03-frontend.vercel.app");
+  res.setHeader("Access-Control-Allow-Origin","*");
   res.setHeader("Access-Control-Allow-Methods","GET,POST");
 })
 
