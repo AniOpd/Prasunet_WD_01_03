@@ -23,6 +23,7 @@ const io = new Server(httpServer, {
 
 httpServer.use(cors({
   origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
 const allUsers = {};
