@@ -1,12 +1,21 @@
-import { createServer } from "http";
+import express from "express";
 import { Server } from "socket.io";
 import dotenv from "dotenv";
 dotenv.config();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
+const app = express();
 
-const httpServer = createServer();
-const io = new Server(httpServer, {
+
+const appServer = app.listen(port, (req,res) => {
+  console.log(`Server is running on port ${port}`);
+})
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
+const io = new Server(appServer, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
@@ -87,14 +96,4 @@ io.on("connection", (socket) => {
       }
     }
   });
-});
-
-
-httpServer.prependListener("request",(req,res)=>{
-  res.setHeader("Access-Control-Allow-Origin","*");
-  res.setHeader("Access-Control-Allow-Methods","GET,POST");
-})
-
-httpServer.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
 });
