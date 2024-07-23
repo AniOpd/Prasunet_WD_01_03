@@ -23,7 +23,12 @@ app.use(cors(
   }
 ));
 
-const io = new Server(appServer);
+const io = new Server(appServer,{
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 
 const allUsers = {};
 const allRooms = [];
