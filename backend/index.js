@@ -2,6 +2,7 @@ import express from "express";
 import { Server } from "socket.io";
 import dotenv from "dotenv";
 dotenv.config();
+import cors from "cors";
 
 const port = process.env.PORT || 4000;
 const app = express();
@@ -15,12 +16,14 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-const io = new Server(appServer, {
-  cors: {
+app.use(cors(
+  {
     origin: "*",
-    methods: ["GET", "POST"],
-  },
-});
+    credentials: true,
+  }
+));
+
+const io = new Server(appServer);
 
 const allUsers = {};
 const allRooms = [];
